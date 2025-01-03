@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -17,7 +15,7 @@ public class LevelUI : MonoBehaviour
     private MapLevelUI mapLevelUI;
     private int levelID;
 
-    public void Show(int starCount,int levelID,MapLevelUI mapLevelUI)
+    public void Show(int starCount, int levelID, MapLevelUI mapLevelUI)
     {
         this.mapLevelUI = mapLevelUI;
         this.levelID = levelID;
@@ -40,7 +38,8 @@ public class LevelUI : MonoBehaviour
             if (starCount == 3)
             {
                 star3Go.SetActive(true);
-            }else if (starCount == 2)
+            }
+            else if (starCount == 2)
             {
                 star2Go.SetActive(true);
             }

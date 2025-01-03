@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -55,7 +52,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            // 初始化鸟的状态，准备
             birdList[index].GoStage(Slingshot.Instance.getCenterPositon());
+            // 设置相机跟随目标
             cameraFollowTarget.SetTarget(birdList[index].transform);
         }
 
@@ -73,8 +72,8 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         int starCount = 0;
-        float pigDeadPercent = pigDeadCount*1f / pigTotalCount;
-        
+        float pigDeadPercent = pigDeadCount * 1f / pigTotalCount;
+
         if (pigDeadPercent > 0.99f)
         {
             starCount = 3;
@@ -82,7 +81,8 @@ public class GameManager : MonoBehaviour
         else if (pigDeadPercent > 0.66f)
         {
             starCount = 2;
-        }else if (pigDeadPercent > 0.33f)
+        }
+        else if (pigDeadPercent > 0.33f)
         {
             starCount = 1;
         }
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
     }
     public void LevelList()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
     //1加载界面   2地图和关卡选择  3游戏场景
 }

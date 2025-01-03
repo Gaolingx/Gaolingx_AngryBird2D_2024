@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,12 +25,12 @@ public class ScoreManager : MonoBehaviour
         scoreDict.Add(10000, score10000);
     }
 
-    public void ShowScore(Vector3 position,int score)
+    public void ShowScore(Vector3 position, int score)
     {
         GameObject scoreGo = GameObject.Instantiate(scorePrefab, position, Quaternion.identity);
 
         Sprite[] scoreArray;
-        scoreDict.TryGetValue(score,out scoreArray);
+        scoreDict.TryGetValue(score, out scoreArray);
 
         int index = Random.Range(0, scoreArray.Length);
         Sprite sprite = scoreArray[index];

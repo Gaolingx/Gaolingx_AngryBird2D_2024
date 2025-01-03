@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -61,7 +59,7 @@ public class Bird : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (state == BirdState.BeforeShoot && EventSystem.current.IsPointerOverGameObject()==false )
+        if (state == BirdState.BeforeShoot && EventSystem.current.IsPointerOverGameObject() == false)
         {
             isMouseDown = true;
             Slingshot.Instance.StartDraw(transform);
@@ -92,7 +90,7 @@ public class Bird : MonoBehaviour
         Vector3 centerPosition = Slingshot.Instance.getCenterPositon();
         Vector3 mp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mp.z = 0;
-        Vector3 mouseDir = mp-centerPosition;
+        Vector3 mouseDir = mp - centerPosition;
 
         float distance = mouseDir.magnitude;
 
@@ -134,7 +132,7 @@ public class Bird : MonoBehaviour
         if (isHaveUsedSkill) return;
 
 
-        if (isFlying==true && Input.GetMouseButtonDown(0))
+        if (isFlying == true && Input.GetMouseButtonDown(0))
         {
             isHaveUsedSkill = true;
             FlyingSkill();
@@ -166,8 +164,8 @@ public class Bird : MonoBehaviour
         {
             isFlying = false;
         }
-        
-        if ( state==BirdState.AfterShoot && collision.relativeVelocity.magnitude > 5)
+
+        if (state == BirdState.AfterShoot && collision.relativeVelocity.magnitude > 5)
         {
             AudioManager.Instance.PlayBirdCollison(transform.position);
         }

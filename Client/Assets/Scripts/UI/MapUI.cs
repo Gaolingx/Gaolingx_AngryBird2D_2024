@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +12,7 @@ public class MapUI : MonoBehaviour
     private int mapID;
 
 
-    public void Show(int starCount,MapLevelUI mapLevelUI,int mapID)//-1
+    public void Show(int starCount, MapLevelUI mapLevelUI, int mapID)//-1
     {
         this.mapLevelUI = mapLevelUI;
         this.mapID = mapID;

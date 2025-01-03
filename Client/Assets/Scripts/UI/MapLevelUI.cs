@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,9 +20,9 @@ public class MapLevelUI : MonoBehaviour
 
     private void UpdateMapUIList(MapSO[] mapArray)
     {
-        for(int i = 0; i < mapArray.Length; i++)
+        for (int i = 0; i < mapArray.Length; i++)
         {
-            mapUIList[i].Show(mapArray[i].starNumberOfMap ,this,i+1);
+            mapUIList[i].Show(mapArray[i].starNumberOfMap, this, i + 1);
         }
     }
     public void OnMapButtonClick(int mapID)
@@ -40,17 +38,17 @@ public class MapLevelUI : MonoBehaviour
 
         int[] starNumberOfLevel = LevelSelectManager.Instance.GetSelectedMap();
 
-        foreach(Transform child in levelGridGo.transform)
+        foreach (Transform child in levelGridGo.transform)
         {
             Destroy(child.gameObject);
         }
 
-        for(int i = 0; i < starNumberOfLevel.Length; i++)
+        for (int i = 0; i < starNumberOfLevel.Length; i++)
         {
             GameObject go = GameObject.Instantiate(levelTemplatePrefab);
             go.GetComponent<RectTransform>().SetParent(levelGridGo.transform);
 
-            go.GetComponent<LevelUI>().Show(starNumberOfLevel[i],i+1,this);
+            go.GetComponent<LevelUI>().Show(starNumberOfLevel[i], i + 1, this);
         }
     }
     public void OnLevelButtonClick(int levelID)
