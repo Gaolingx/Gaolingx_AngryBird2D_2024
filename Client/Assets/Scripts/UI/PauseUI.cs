@@ -1,4 +1,4 @@
-using Core.GameLogic;
+﻿using Core.GameLogic;
 using UnityEngine;
 
 namespace Core.UI

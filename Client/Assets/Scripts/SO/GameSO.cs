@@ -1,4 +1,4 @@
-using UnityEngine;
+О╩©using UnityEngine;
 
 namespace Core.Data
 {
@@ -27,10 +27,10 @@ namespace Core.Data
                 }
                 mapArray[selectedMapID - 1].starNumberOfMap = sum;
 
-                //еп╤ойг╥ЯйгвН╨Ср╩╧ь
+                //Е┬╓Ф√╜Ф≤╞Е░╕Ф≤╞Ф°─Е░▌Д╦─Е┘Ё
                 if (selectedLevelID >= mapArray[selectedMapID - 1].starNumberOfLevel.Length)
                 {
-                    //еп╤ообр╩╦Ж╣ьм╪йг╥Яря╬╜©╙фТё╛хГ╧Шн╢©╙фТё╛╬м©╙фТ
+                    //Е┬╓Ф√╜Д╦▀Д╦─Д╦╙Е°╟Е⌡╬Ф≤╞Е░╕Е╥╡Г╩▐Е╪─Е░╞О╪▄Е╕┌Ф·°Ф°╙Е╪─Е░╞О╪▄Е╟╠Е╪─Е░╞
                     if (selectedMapID < mapArray.Length && mapArray[selectedMapID].starNumberOfMap == -1)
                     {
                         mapArray[selectedMapID].starNumberOfMap = 0;
@@ -39,7 +39,7 @@ namespace Core.Data
                 }
                 else
                 {
-                    //еп╤ообр╩╧ьйг╥Я©╙фТ
+                    //Е┬╓Ф√╜Д╦▀Д╦─Е┘ЁФ≤╞Е░╕Е╪─Е░╞
                     if (mapArray[selectedMapID - 1].starNumberOfLevel[selectedLevelID] == -1)
                     {
                         mapArray[selectedMapID - 1].starNumberOfLevel[selectedLevelID] = 0;

@@ -1,4 +1,4 @@
-using Tools;
+ï»¿using Tools;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -14,7 +14,7 @@ namespace Core.GameLogic
     public class Bird : MonoBehaviour
     {
         public BirdState state = BirdState.BeforeShoot;
-        //µÈ´ı  ·¢ÉäÇ°  ·¢Éäºó
+        //ç­‰å¾…  å‘å°„å‰  å‘å°„å
 
         private bool isMouseDown = false;
         public float maxDistance = 2.45f;

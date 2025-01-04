@@ -1,4 +1,4 @@
-namespace Core.GameLogic
+﻿namespace Core.GameLogic
 {
     public class YellowBird : Bird
     {

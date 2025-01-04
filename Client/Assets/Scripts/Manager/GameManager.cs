@@ -1,4 +1,4 @@
-using Core.Data;
+锘縰sing Core.Data;
 using Core.UI;
 using Tools;
 using UnityEngine;
@@ -57,9 +57,9 @@ namespace Core.GameLogic
             }
             else
             {
-                // 初始化鸟的状态，准备
+                // 鍒濆鍖栭笩鐨勭姸鎬侊紝鍑嗗
                 birdList[index].GoStage(Slingshot.Instance.getCenterPositon());
-                // 设置相机跟随目标
+                // 璁剧疆鐩告満璺熼殢鐩爣
                 cameraFollowTarget.SetTarget(birdList[index].transform);
             }
 
@@ -104,6 +104,6 @@ namespace Core.GameLogic
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
-        //1加载界面   2地图和关卡选择  3游戏场景
+        //1鍔犺浇鐣岄潰   2鍦板浘鍜屽叧鍗￠�夋嫨  3娓告垙鍦烘櫙
     }
 }

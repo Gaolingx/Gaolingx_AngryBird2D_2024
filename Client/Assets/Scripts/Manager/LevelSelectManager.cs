@@ -1,4 +1,4 @@
-using Core.Data;
+﻿using Core.Data;
 using Core.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
