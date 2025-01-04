@@ -1,66 +1,69 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Destructiable : MonoBehaviour
+namespace Core.GameLogic
 {
-    public int maxHP = 100;
-    private int currentHP;
-
-    public List<Sprite> injuredSpriteList;//1
-
-    private SpriteRenderer spriteRenderer;
-
-    private GameObject boomPrefab;
-
-    private void Start()
+    public class Destructiable : MonoBehaviour
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        currentHP = maxHP;
-        boomPrefab = Resources.Load<GameObject>("Boom1");
-    }
+        public int maxHP = 100;
+        private int currentHP;
 
+        public List<Sprite> injuredSpriteList;//1
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        TakeDamage((int)(collision.relativeVelocity.magnitude * 8));
-    }
-    public void TakeDamage(int damage)
-    {
-        currentHP -= damage;
+        private SpriteRenderer spriteRenderer;
 
-        if (currentHP <= 0)
+        private GameObject boomPrefab;
+
+        private void Start()
         {
-            Dead();
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            currentHP = maxHP;
+            boomPrefab = Resources.Load<GameObject>("Boom1");
         }
-        else
+
+
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            Sprite beforeSprite = spriteRenderer.sprite;
-            int index = (int)((maxHP - currentHP) / (maxHP / (injuredSpriteList.Count + 1.0f))) - 1;
-            if (index != -1)
+            TakeDamage((int)(collision.relativeVelocity.magnitude * 8));
+        }
+        public void TakeDamage(int damage)
+        {
+            currentHP -= damage;
+
+            if (currentHP <= 0)
             {
-                spriteRenderer.sprite = injuredSpriteList[index];
+                Dead();
             }
-            if (beforeSprite != spriteRenderer.sprite)
+            else
             {
-                PlayAudioCollision();
+                Sprite beforeSprite = spriteRenderer.sprite;
+                int index = (int)((maxHP - currentHP) / (maxHP / (injuredSpriteList.Count + 1.0f))) - 1;
+                if (index != -1)
+                {
+                    spriteRenderer.sprite = injuredSpriteList[index];
+                }
+                if (beforeSprite != spriteRenderer.sprite)
+                {
+                    PlayAudioCollision();
+                }
             }
         }
-    }
 
-    protected virtual void PlayAudioCollision()
-    {
-        AudioManager.Instance.PlayWoodCollision(transform.position);
-    }
+        protected virtual void PlayAudioCollision()
+        {
+            AudioManager.Instance.PlayWoodCollision(transform.position);
+        }
 
-    protected virtual void PlayAudioDestroyed()
-    {
-        AudioManager.Instance.PlayWoodDestroyed(transform.position);
-    }
+        protected virtual void PlayAudioDestroyed()
+        {
+            AudioManager.Instance.PlayWoodDestroyed(transform.position);
+        }
 
-    public virtual void Dead()
-    {
-        PlayAudioDestroyed();
-        GameObject.Instantiate(boomPrefab, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        public virtual void Dead()
+        {
+            PlayAudioDestroyed();
+            GameObject.Instantiate(boomPrefab, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }

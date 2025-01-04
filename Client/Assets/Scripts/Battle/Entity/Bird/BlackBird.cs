@@ -1,23 +1,26 @@
 using System;
 using UnityEngine;
 
-public class BlackBird : Bird
+namespace Core.GameLogic
 {
-    public float boomRadius = 2.5f;
-
-    protected override void FullTimeSkill()
+    public class BlackBird : Bird
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, boomRadius);
-        foreach (Collider2D collider in colliders)
-        {
-            Destructiable des = collider.GetComponent<Destructiable>();
-            if (des != null)
-            {
-                des.TakeDamage(Int32.MaxValue);
-            }
-        }
+        public float boomRadius = 2.5f;
 
-        state = BirdState.WaitToDie;
-        LoadNextBird();
+        protected override void FullTimeSkill()
+        {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, boomRadius);
+            foreach (Collider2D collider in colliders)
+            {
+                Destructiable des = collider.GetComponent<Destructiable>();
+                if (des != null)
+                {
+                    des.TakeDamage(Int32.MaxValue);
+                }
+            }
+
+            state = BirdState.WaitToDie;
+            LoadNextBird();
+        }
     }
 }

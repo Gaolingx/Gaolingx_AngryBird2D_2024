@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class StarUI : MonoBehaviour
+namespace Core.UI
 {
-    private Animator anim;
-
-    private void Awake()
+    public class StarUI : MonoBehaviour
     {
-        anim = GetComponent<Animator>();
-    }
+        private Animator anim;
 
-    public void Show()
-    {
-        anim.SetTrigger("IsShow");
+        private void Awake()
+        {
+            anim = GetComponent<Animator>();
+        }
+
+        public void Show()
+        {
+            anim.SetTrigger("IsShow");
+        }
     }
 }

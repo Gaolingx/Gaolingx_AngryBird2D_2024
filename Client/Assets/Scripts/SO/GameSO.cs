@@ -1,49 +1,52 @@
 using UnityEngine;
 
-[CreateAssetMenu()]
-public class GameSO : ScriptableObject
+namespace Core.Data
 {
-    public MapSO[] mapArray;
-    public int selectedMapID = -1;
-    public int selectedLevelID = -1;
-
-    public void UpdateLevel(int number)
+    [CreateAssetMenu(fileName = "GameData", menuName = "ScriptableObjects/GameData", order = 1)]
+    public class GameSO : ScriptableObject
     {
-        if (number <= 0) return;
+        public MapSO[] mapArray;
+        public int selectedMapID = -1;
+        public int selectedLevelID = -1;
 
-        if (number > mapArray[selectedMapID - 1].starNumberOfLevel[selectedLevelID - 1])
+        public void UpdateLevel(int number)
         {
-            mapArray[selectedMapID - 1].starNumberOfLevel[selectedLevelID - 1] = number;
+            if (number <= 0) return;
 
-            int sum = 0;
-            foreach (int num in mapArray[selectedMapID - 1].starNumberOfLevel)
+            if (number > mapArray[selectedMapID - 1].starNumberOfLevel[selectedLevelID - 1])
             {
-                if (num > 0)
-                {
-                    sum += num;
-                }
-            }
-            mapArray[selectedMapID - 1].starNumberOfMap = sum;
+                mapArray[selectedMapID - 1].starNumberOfLevel[selectedLevelID - 1] = number;
 
-            //判断是否是最后一关
-            if (selectedLevelID >= mapArray[selectedMapID - 1].starNumberOfLevel.Length)
-            {
-                //判断下一个地图是否已经开启，如果未开启，就开启
-                if (selectedMapID < mapArray.Length && mapArray[selectedMapID].starNumberOfMap == -1)
+                int sum = 0;
+                foreach (int num in mapArray[selectedMapID - 1].starNumberOfLevel)
                 {
-                    mapArray[selectedMapID].starNumberOfMap = 0;
-                    mapArray[selectedMapID].starNumberOfLevel[0] = 0;
+                    if (num > 0)
+                    {
+                        sum += num;
+                    }
                 }
-            }
-            else
-            {
-                //判断下一关是否开启
-                if (mapArray[selectedMapID - 1].starNumberOfLevel[selectedLevelID] == -1)
-                {
-                    mapArray[selectedMapID - 1].starNumberOfLevel[selectedLevelID] = 0;
-                }
-            }
+                mapArray[selectedMapID - 1].starNumberOfMap = sum;
 
+                //判断是否是最后一关
+                if (selectedLevelID >= mapArray[selectedMapID - 1].starNumberOfLevel.Length)
+                {
+                    //判断下一个地图是否已经开启，如果未开启，就开启
+                    if (selectedMapID < mapArray.Length && mapArray[selectedMapID].starNumberOfMap == -1)
+                    {
+                        mapArray[selectedMapID].starNumberOfMap = 0;
+                        mapArray[selectedMapID].starNumberOfLevel[0] = 0;
+                    }
+                }
+                else
+                {
+                    //判断下一关是否开启
+                    if (mapArray[selectedMapID - 1].starNumberOfLevel[selectedLevelID] == -1)
+                    {
+                        mapArray[selectedMapID - 1].starNumberOfLevel[selectedLevelID] = 0;
+                    }
+                }
+
+            }
         }
     }
 }

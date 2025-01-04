@@ -1,54 +1,58 @@
+using Core.GameLogic;
 using UnityEngine;
 
-public class GameOverUI : MonoBehaviour
+namespace Core.UI
 {
-    private Animator anim;
-
-    private int starCount = 0;
-
-    public GameObject failPig;
-
-    public StarUI starUI1;
-    public StarUI starUI2;
-    public StarUI starUI3;
-
-    private void Awake()
+    public class GameOverUI : MonoBehaviour
     {
-        anim = GetComponent<Animator>();
-    }
+        private Animator anim;
 
-    public void Show(int starCount)// 0 123
-    {
-        anim.SetTrigger("IsShow");
-        this.starCount = starCount;
-    }
+        private int starCount = 0;
 
-    public void ShowStar()
-    {
-        if (starCount == 0)
+        public GameObject failPig;
+
+        public StarUI starUI1;
+        public StarUI starUI2;
+        public StarUI starUI3;
+
+        private void Awake()
         {
-            failPig.SetActive(true);
+            anim = GetComponent<Animator>();
         }
-        if (starCount >= 1)
-        {
-            starUI1.Show();
-        }
-        if (starCount >= 2)
-        {
-            starUI2.Show();
-        }
-        if (starCount >= 3)
-        {
-            starUI3.Show();
-        }
-    }
 
-    public void OnRestartButtonClick()
-    {
-        GameManager.Instance.RestartLevel();
-    }
-    public void OnLevelListButtonClick()
-    {
-        GameManager.Instance.LevelList();
+        public void Show(int starCount)// 0 123
+        {
+            anim.SetTrigger("IsShow");
+            this.starCount = starCount;
+        }
+
+        public void ShowStar()
+        {
+            if (starCount == 0)
+            {
+                failPig.SetActive(true);
+            }
+            if (starCount >= 1)
+            {
+                starUI1.Show();
+            }
+            if (starCount >= 2)
+            {
+                starUI2.Show();
+            }
+            if (starCount >= 3)
+            {
+                starUI3.Show();
+            }
+        }
+
+        public void OnRestartButtonClick()
+        {
+            GameManager.Instance.RestartLevel();
+        }
+        public void OnLevelListButtonClick()
+        {
+            GameManager.Instance.LevelList();
+        }
     }
 }

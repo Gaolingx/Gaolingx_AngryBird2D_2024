@@ -1,9 +1,12 @@
-public class YellowBird : Bird
+namespace Core.GameLogic
 {
-
-    protected override void FlyingSkill()
+    public class YellowBird : Bird
     {
-        rgd.velocity = rgd.velocity * 2;
-    }
 
+        protected override void FlyingSkill()
+        {
+            rgd.velocity = rgd.velocity * 2;
+        }
+
+    }
 }

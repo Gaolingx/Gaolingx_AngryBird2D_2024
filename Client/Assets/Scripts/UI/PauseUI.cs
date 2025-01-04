@@ -1,31 +1,35 @@
+using Core.GameLogic;
 using UnityEngine;
 
-public class PauseUI : MonoBehaviour
+namespace Core.UI
 {
-    private Animator anim;
-    // Start is called before the first frame update
-    void Start()
+    public class PauseUI : MonoBehaviour
     {
-        anim = GetComponent<Animator>();
-    }
+        private Animator anim;
+        // Start is called before the first frame update
+        void Start()
+        {
+            anim = GetComponent<Animator>();
+        }
 
-    public void OnPauseButtonClick()
-    {
-        Time.timeScale = 0;
-        anim.SetBool("IsShow", true);
-    }
-    public void OnContinueButtonClick()
-    {
-        Time.timeScale = 1;
-        anim.SetBool("IsShow", false);
-    }
-    public void OnRestartButtonClick()
-    {
-        GameManager.Instance.RestartLevel();
-    }
-    public void OnLevelListButtonClick()
-    {
-        GameManager.Instance.LevelList();
-    }
+        public void OnPauseButtonClick()
+        {
+            Time.timeScale = 0;
+            anim.SetBool("IsShow", true);
+        }
+        public void OnContinueButtonClick()
+        {
+            Time.timeScale = 1;
+            anim.SetBool("IsShow", false);
+        }
+        public void OnRestartButtonClick()
+        {
+            GameManager.Instance.RestartLevel();
+        }
+        public void OnLevelListButtonClick()
+        {
+            GameManager.Instance.LevelList();
+        }
 
+    }
 }

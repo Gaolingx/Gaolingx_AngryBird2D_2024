@@ -1,34 +1,37 @@
 using UnityEngine;
 
-public class FollowTarget : MonoBehaviour
+namespace Tools
 {
-
-    private Transform target;
-    public float smoothSpeed = 2;
-
-    // Start is called before the first frame update
-    void Start()
+    public class FollowTarget : MonoBehaviour
     {
 
-    }
+        private Transform target;
+        public float smoothSpeed = 2;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (target != null)
+        // Start is called before the first frame update
+        void Start()
         {
-            Vector3 position = transform.position;
-            position.x = target.position.x;
 
-            position.x = Mathf.Clamp(position.x, 0, 20);
-
-            transform.position = Vector3.Lerp(transform.position, position, Time.deltaTime * smoothSpeed);
         }
 
-    }
+        // Update is called once per frame
+        void Update()
+        {
+            if (target != null)
+            {
+                Vector3 position = transform.position;
+                position.x = target.position.x;
 
-    public void SetTarget(Transform transform)
-    {
-        this.target = transform;
+                position.x = Mathf.Clamp(position.x, 0, 20);
+
+                transform.position = Vector3.Lerp(transform.position, position, Time.deltaTime * smoothSpeed);
+            }
+
+        }
+
+        public void SetTarget(Transform transform)
+        {
+            this.target = transform;
+        }
     }
 }
