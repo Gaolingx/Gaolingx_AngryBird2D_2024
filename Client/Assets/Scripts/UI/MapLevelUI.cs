@@ -1,6 +1,7 @@
 ﻿using Core.Data;
 using Core.GameLogic;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace Core.UI
@@ -64,6 +65,16 @@ namespace Core.UI
         {
             mapListGo.SetActive(true);
             levelListGo.SetActive(false);
+        }
+
+        public void OnClickExitGameBtn()
+        {
+            Debug.Log("Info:Game Exit");
+#if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
         }
     }
 }

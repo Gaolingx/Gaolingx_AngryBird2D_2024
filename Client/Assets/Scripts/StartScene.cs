@@ -6,11 +6,19 @@ namespace Core.GameLogic
 {
     public class StartScene : MonoBehaviour
     {
-        public StartSceneUI StartSceneWnd;
+        [SerializeField]
+        private int m_FrameRate = 60;
+
+        [SerializeField]
+        private StartSceneUI StartSceneWnd;
 
         private float progress = 0f;
 
-        // Start is called before the first frame update
+        private void Awake()
+        {
+            Application.targetFrameRate = m_FrameRate;
+        }
+
         private void Start()
         {
             StartCoroutine(LoadGameScene());
@@ -33,5 +41,15 @@ namespace Core.GameLogic
                 }
             }
         }
+
+        /// <summary>
+        /// 获取或设置游戏帧率。
+        /// </summary>
+        public int FrameRate
+        {
+            get => m_FrameRate;
+            set => Application.targetFrameRate = m_FrameRate = value;
+        }
+
     }
 }
